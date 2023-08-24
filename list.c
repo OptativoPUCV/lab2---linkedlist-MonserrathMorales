@@ -37,8 +37,10 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-  
-    return NULL;
+    if(!list->head) return NULL;
+    list->current = list->head;
+    )
+    return (list->head->data);
 }
 
 void * nextList(List * list) {
@@ -54,6 +56,10 @@ void * prevList(List * list) {
 }
 
 void pushFront(List * list, void * data) {
+  if(list->next == NULL) return;
+  
+
+  
 }
 
 void pushBack(List * list, void * data) {
@@ -75,6 +81,10 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
+    list->current = list->head->prev;
+    
+
+    free(node);
     return NULL;
 }
 
