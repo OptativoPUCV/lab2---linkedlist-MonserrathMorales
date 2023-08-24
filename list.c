@@ -29,9 +29,11 @@ Node * createNode(void * data) {
 }
 
 List * createList() {
-  List list
-  
-     return list;
+    List list;
+    list.head = NULL;
+    list.tail = NULL;
+    list.current = NULL;
+    return list;
 }
 
 void * firstList(List * list) {
