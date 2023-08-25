@@ -47,8 +47,8 @@ void * firstList(List * list) {
 /* retorna el dato del nodo a continuación del current y actualiza el current para que apunte a ese nodo */
 void * nextList(List * list) {
     if(list->current->next != NULL) {
-      list->current = list->next;
-      return (list->data);
+      list->current = list->current->next;
+      return (list->current->data);
     }
     return NULL;
 }
