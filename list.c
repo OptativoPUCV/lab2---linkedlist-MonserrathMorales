@@ -44,7 +44,12 @@ void * firstList(List * list) {
     return NULL;
 }
 
+/* retorna el dato del nodo a continuación del current y actualiza el current para que apunte a ese nodo */
 void * nextList(List * list) {
+    if(list->next != NULL) {
+      list->current = list->next;
+      return (list->data);
+    }
     return NULL;
 }
 

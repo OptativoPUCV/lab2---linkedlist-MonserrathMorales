@@ -84,3 +84,19 @@ Fri 25 Aug 2023 01:48:55 AM UTC:
  tests:  2|5
 total_score: 15/70
 d5bcbd5
+Fri 25 Aug 2023 01:53:52 AM UTC: 
+ list.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+In file included from test.c:5:
+list.c: In function ‘nextList’:
+list.c:49:12: error: ‘List’ {aka ‘struct List’} has no member named ‘next’
+   49 |     if(list->next != NULL) {
+      |            ^~
+list.c:50:27: error: ‘List’ {aka ‘struct List’} has no member named ‘next’
+   50 |       list->current = list->next;
+      |                           ^~
+list.c:51:19: error: ‘List’ {aka ‘struct List’} has no member named ‘data’
+   51 |       return (list->data);
+      |                   ^~
+Compilation failed
+56f044f
