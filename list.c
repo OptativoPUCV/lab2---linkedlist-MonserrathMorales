@@ -61,17 +61,18 @@ void * lastList(List * list) {
 }
 
 void * prevList(List * list) {
-    if(list->current != NULL && list->current->prev != NULL) {
+    if(list->current != NULL) {
       list->current = list->current->prev;
-      return(list->current->data);
+      return (list->current->data);
     }
     return NULL;
 }
 /* agrega un dato al comienzo de la lista. */
 void pushFront(List * list, void * dato) {
     Node* nodo = createNode(dato);
-    nodo->next = list->head;
     nodo->prev = NULL;
+    nodo->next = list->head;
+
     if(list->head != NULL) {
       list->head->prev = nodo;
     }
