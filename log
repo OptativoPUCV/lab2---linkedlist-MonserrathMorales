@@ -100,3 +100,16 @@ list.c:51:19: error: ‘List’ {aka ‘struct List’} has no member named ‘d
       |                   ^~
 Compilation failed
 56f044f
+Fri 25 Aug 2023 01:55:16 AM UTC: 
+ list.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+list.c: In function ‘nextList’:
+list.c:50:27: error: ‘List’ {aka ‘struct List’} has no member named ‘next’
+   50 |       list->current = list->next;
+      |                           ^~
+list.c:51:19: error: ‘List’ {aka ‘struct List’} has no member named ‘data’
+   51 |       return (list->data);
+      |                   ^~
+Compilation failed
+61f96db
