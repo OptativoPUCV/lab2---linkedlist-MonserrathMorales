@@ -57,3 +57,13 @@ list.c:87:10: error: ‘node’ undeclared (first use in this function); did you
 list.c:87:10: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 1ff6e61
+Fri 25 Aug 2023 01:41:08 AM UTC: 
+ list.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+In file included from test.c:5:
+list.c: In function ‘firstList’:
+list.c:42:5: error: expected statement before ‘)’ token
+   42 |     )
+      |     ^
+Compilation failed
+555362e
