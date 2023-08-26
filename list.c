@@ -59,7 +59,7 @@ void * lastList(List * list) {
     }
     return NULL;
 }
-/* retorna el dato del nodo anterior a current y actualiza el current para que apunte a ese nodo. */
+
 void * prevList(List * list) {
     if(list->current != NULL && list->current->prev != NULL) {
       list->current = list->current->prev;
@@ -67,7 +67,7 @@ void * prevList(List * list) {
     }
     return NULL;
 }
-/* agrega un dato al comienzo de la lista. */
+
 void pushFront(List * list, void * dato) {
     Node* nodo = createNode(dato);
     nodo->prev = NULL;
@@ -84,7 +84,7 @@ void pushBack(List * list, void * data) {
     list->current = list->tail;
     pushCurrent(list,data);
 }
-/* agrega un dato a continuación del nodo apuntado por `list->current`. */
+
 void pushCurrent(List * list, void * data) {
     Node * nodo = createNode(data);
     nodo->prev = list->current;
@@ -106,23 +106,19 @@ void * popBack(List * list) {
     list->current = list->tail;
     return popCurrent(list);
 }
-
+/* elimina el nodo que está en la posición del current de la lista enlazada, y además retorna el **dato** del nodo eliminado.
+> **Nota**: El current debe quedar apuntando al nodo siguiente del eliminado. */
 void * popCurrent(List * list) {
     if(list->current != NULL) {
-      Node* aux = list->head;
-      if (list->current == aux) {
-            list->head = aux->next;
+      Node * aux = list-> head;
+      while(aux->next != list->current) {
+        aux = aux->next;
       }
-      else {
-        while(aux->next != list->current) {
-          aux = aux->next;
-        }
-        if (aux->next == list->current) {
-          aux->next = list->current->next;
-        }
-      }
-      List * data = list->current->data;
-      list->current = list->current->next;
+      aux->next = list->current->next;
+      list->current->next->prev = aux;
+      
+      void * data = list->current->data;
+      free(list->current);
       return data;
     }
     return NULL;
