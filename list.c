@@ -120,9 +120,6 @@ void * popCurrent(List * list) {
         if (list->head != NULL) {
           list->head->prev = NULL;
         }
-        else {
-          list->tail = NULL;
-        }
       }
       // caso 3: list->current->next == NULL (current==tail)
       else if(current == list->tail) {
@@ -130,20 +127,14 @@ void * popCurrent(List * list) {
         if(list->tail != NULL) {
           list->tail->next = NULL;
         }
-        else {
-          list->head = NULL;
-        }
       }
       // (current!=head && head!=tail)
       else {
         current->prev->next = current->next;
         current->next->prev = current->prev;
       }
-      if (list->current == current) {
-        list->current = current->next;
-      }
       free(current);
-      list->tail--;
+      list->tail = list->tail->prev;
       return dato;
     }
     return NULL;  
