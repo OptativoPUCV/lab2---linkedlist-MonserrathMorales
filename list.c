@@ -109,7 +109,7 @@ void * popBack(List * list) {
 /* elimina el nodo que está en la posición del current de la lista enlazada, y además retorna el **dato** del nodo eliminado.
 > **Nota**: El current debe quedar apuntando al nodo siguiente del eliminado. */
 void * popCurrent(List * list) {
-    if(list->head != NULL && list->current != NULL) {
+    if(list->current != NULL) {
       Node * aux = list-> head;
       while(aux->next != list->current && aux->next != NULL) {
         aux = aux->next;
@@ -117,9 +117,11 @@ void * popCurrent(List * list) {
       aux->next = list->current->next;
       list->current->next->prev = aux;
       
-      void * data = list->current->data;
+      void * dato = list->current->data;
+      void * sig = list->current->next;
       free(list->current);
-      return data;
+      list->current = sig;
+      return dato;
     }
     return NULL;
 }
