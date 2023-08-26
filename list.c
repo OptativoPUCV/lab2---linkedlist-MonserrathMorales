@@ -133,7 +133,7 @@ void * popCurrent(List * list) {
         list->current->next->prev = list->current->prev;
       }
       list->current = list->current->next;
-      free(list->current->prev);
+      free(list->current);
       list->tail--;
       return dato;
     }
