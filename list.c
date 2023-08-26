@@ -115,8 +115,6 @@ void * popCurrent(List * list) {
       while(aux->next != list->current && aux->next != NULL) {
         aux = aux->next;
       }
-      aux->next = list->current->next;
-      void * dato = list->current->data;
 
       // caso 2: list->current->prev == NULL (current==head)
       if(list->current == list->head) {
@@ -132,6 +130,8 @@ void * popCurrent(List * list) {
           list->tail->next = NULL;
         }
       }
+      void * dato = list->current->data;
+      aux->next = list->current->next;
       list->current = list->current->next;
       free(list->current->prev);
       list->tail--;
