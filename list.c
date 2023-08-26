@@ -115,23 +115,23 @@ void * popCurrent(List * list) {
       void * dato = list->current->data;
       
       // caso 2: list->current->prev == NULL (current==head)
-      if(list->current == list->head) {
-        list->head = list->current->next;
+      if(current == list->head) {
+        list->head = current->next;
         if (list->head != NULL) {
           list->head->prev = NULL;
         }
       }
       // caso 3: list->current->next == NULL (current==tail)
-      else if(list->current == list->tail) {
-        list->tail = list->current->prev;
+      else if(current == list->tail) {
+        list->tail = current->prev;
         if(list->tail != NULL) {
           list->tail->next = NULL;
         }
       }
       // (current!=head && head!=tail)
       else {
-        list->current->prev->next = list->current->next;
-        list->current->next->prev = list->current->prev;
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
       }
       list->current = current->next;
       free(current);
